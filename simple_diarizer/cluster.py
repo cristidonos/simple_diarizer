@@ -4,7 +4,7 @@ import scipy.cluster.hierarchy as hcluster
 from scipy.sparse.csgraph import laplacian
 from scipy.ndimage import gaussian_filter
 from sklearn.cluster import AgglomerativeClustering, KMeans, SpectralClustering
-from sklearn.metrics import pairwise_distances
+from sklearn.metrics import pairwise_distances, silhouette_score
 
 def similarity_matrix(embeds, metric='cosine'):
     return pairwise_distances(embeds, metric=metric)
