@@ -87,7 +87,7 @@ def cluster_SC(embeds, n_clusters=None, threshold=None,
                                affinity='precomputed')
                 prediction = cluster_model.fit_predict(S)
                 silhouette_scores.append(silhouette_score(S, prediction))
-            cluster_model = SpectralClustering(n_clusters=np.array(silhouette_scores).argmax(),
+            cluster_model = SpectralClustering(n_clusters=np.array(silhouette_scores).argmax()+1,
                                                affinity='precomputed')
 
             return cluster_model.fit_predict(S)                
