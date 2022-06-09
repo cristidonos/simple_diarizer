@@ -74,7 +74,9 @@ def cluster_SC(embeds, n_clusters=None, threshold=None,
         labels = kmeans_clusterer.fit_predict(spectral_embeddings)
         return labels
     else:
+        print(n_clusters)
         if n_clusters>0:
+            print(n_clusters)
             cluster_model = SpectralClustering(n_clusters=n_clusters,
                                                affinity='precomputed')
 
@@ -88,6 +90,7 @@ def cluster_SC(embeds, n_clusters=None, threshold=None,
                 prediction = cluster_model.fit_predict(S)
                 silhouette_scores.append(silhouette_score(S, prediction))
             best_n = np.array(silhouette_scores).argmax()+1
+            print('Choice %d' % best_n)
             cluster_model = SpectralClustering(n_clusters=best_n,
                                                affinity='precomputed')
 
